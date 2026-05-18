@@ -26,6 +26,7 @@ import { RolesGuard } from './common/guards/roles.guard';
     }),
     LoggerModule,
     DatabaseModule,
+    CacheModule,
     HealthModule,
     SecurityModule,
     AuthModule,
