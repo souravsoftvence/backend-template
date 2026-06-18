@@ -2,9 +2,11 @@ services:
   backend:
     build:
       context: .
-      target: builder
+    command: sh -c "npx prisma db push && node dist/main"
     ports:
       - "${PORT:-3000}:3000"
+    env_file:
+      - .env
     environment:
       - DATABASE_URL=postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-password}@postgres:5432/${DB_NAME:-mydb}?schema=public
       - REDIS_HOST=redis

@@ -61,7 +61,8 @@ async function bootstrap() {
 
     Logger.log(`Application is running on: ${await app.getUrl()}`, 'Bootstrap');
   } catch (error) {
-    Logger.error(`Critical Bootstrap failure: ${error.message}`, error.stack, 'Bootstrap');
+    const err = error instanceof Error ? error : new Error(String(error));
+    Logger.error(`Critical Bootstrap failure: ${err.message}`, err.stack, 'Bootstrap');
     process.exit(1);
   }
 }
